@@ -1,0 +1,15 @@
+correggere:
+
+nel README:
+	bisogna prima fare make lib e poi compilare il server e il client
+
+sui worker bisogna sempre fare una pthread_join o una pthread_detach quando terminano
+una possibile soluzione e' quella di avere un nuovo thread chiamato ad esempio cleaner
+che scorre la lista dei thread terminati e fa una pthread_join per ogni thread.
+tale thread potrebbe essere in attesa su una condition variable e venire svegliato 
+quando un numero > di N thread worker sono terminati. ovviamente il thread deve essere 
+sempre in esecuzione e si deve mettere di nuovo in attesa una volta che ha terminato
+di fare le pthread_join
+
+
+aggiungere i controlli alle chiamate relative alla mutua esclusione

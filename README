@@ -1,0 +1,32 @@
+compilare il server: make dserver
+
+compilare il client: make dplan
+
+avviare il server: 
+	dserver diragenda
+dove diragenda e' il path della directory che contiene le agende
+Il server lavora in foreground. Se diragenda esiste, la apre in lettura e scrittura e per ogni file agenda 
+aname contenuto nella directory carica il contenuto dell’agenda aname all’interno di una lista in memoria centrale  Se diragenda non esiste viene creato. All’attivazione, il server crea anche una 
+socket AF UNIX nella directory ./tmp 
+./tmp/dsock 
+su cui i client apriranno le connessioni con il server. 
+
+avviare il client:
+Il client e` un comando Unix che puo` essere invocato con diverse modalita` ed opzioni 
+dplan -c aname 
+   -> crea una nuova agenda di nome ‘‘aname’’ 
+dplan -q aname 
+   -> rimuove una agenda di nome ‘‘aname’’ (solo se vuota) 
+dplan agenda -d gg-mm-aaaa -u utente#descrizione 
+   -> inserisce in ‘‘agenda’’ un nuovo evento 
+   -> -d specifica la data 
+   -> -u specifica l’utente che sta effettuando la registrazione e la descrizione dell’evento 
+dplan agenda -g gg-mm-aaaa 
+   -> richiede gli eventi registrati per un certo giorno su ‘‘agenda’’ e li stampa sullo stdout 
+dplan agenda -m mm-aaaa 
+   -> richiede gli eventi registrati su ‘‘agenda’’ per un certo mese e li stampa sullo stdout 
+dplan agenda -r pattern 
+   -> elimina tutti gli eventi di ‘‘agenda’’ che contengono ‘‘pattern’’ come sottostringa in un qualsiasi campo 
+dplan 
+   -> stampa un messaggio di uso 
+
