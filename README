@@ -5,11 +5,12 @@ compilare il client: make dplan
 avviare il server: 
 	dserver diragenda
 dove diragenda e' il path della directory che contiene le agende
-Il server lavora in foreground. Se diragenda esiste, la apre in lettura e scrittura e per ogni file agenda 
-aname contenuto nella directory carica il contenuto dell’agenda aname all’interno di una lista in memoria centrale  Se diragenda non esiste viene creato. All’attivazione, il server crea anche una 
-socket AF UNIX nella directory ./tmp 
+Il server lavora in foreground. 
+Se diragenda esiste allora la apre in lettura e scrittura altrimenti la crea. 
+Per ogni file agenda aname contenuto nella directory carica il contenuto dell’agenda aname all’interno di una lista in memoria centrale.  
+All’attivazione, il server crea anche una socket AF UNIX 
 ./tmp/dsock 
-su cui i client apriranno le connessioni con il server. 
+su cui i client apriranno le connessioni con il server.
 
 avviare il client:
 Il client e` un comando Unix che puo` essere invocato con diverse modalita` ed opzioni 
